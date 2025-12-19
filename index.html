@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaCore | Web & Güvenlik Çözümleri</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+
+body{
+    background:radial-gradient(circle at top,#0b2b3a,#050c10);
+    color:#fff;
+}
+
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo svg{
+    width:40px;
+    height:40px;
+}
+
+.logo span{
+    font-size:1.8rem;
+    font-weight:bold;
+    color:#00f0ff;
+}
+
+/* HERO */
+.hero{
+    padding:120px 20px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:3rem;
+    color:#00f0ff;
+}
+
+.hero p{
+    margin-top:20px;
+    font-size:1.2rem;
+    opacity:.85;
+}
+
+/* SERVICES */
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:40px;
+    padding:80px;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 0 40px rgba(0,240,255,.15);
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 0 60px rgba(0,240,255,.35);
+}
+
+.card h3{
+    color:#00f0ff;
+    margin:15px 0;
+}
+
+.icon{
+    font-size:2.2rem;
+}
+
+.open-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#00f0ff;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+/* FORM */
+.form-box{
+    display:none;
+    margin-top:20px;
+    background:rgba(0,0,0,.7);
+    padding:20px;
+    border-radius:12px;
+    animation:fade .3s ease;
+}
+
+@keyframes fade{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+label{
+    margin-top:10px;
+    display:block;
+    font-size:.9rem;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:8px;
+    border-radius:6px;
+    border:none;
+    margin-top:5px;
+}
+
+textarea{ resize:none; }
+
+.submit-btn{
+    margin-top:15px;
+    width:100%;
+    padding:12px;
+    background:#00f0ff;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* WHY */
+.why{
+    padding:80px 20px;
+    text-align:center;
+}
+
+.why h2{
+    color:#00f0ff;
+    margin-bottom:30px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.why-box{
+    background:rgba(255,255,255,.05);
+    padding:25px;
+    border-radius:15px;
+}
+
+/* FOOTER */
+footer{
+    background:#000;
+    padding:30px;
+    text-align:center;
+    opacity:.85;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+<svg viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" stroke="#00f0ff" stroke-width="4" fill="none"/>
+<circle cx="50" cy="50" r="20" fill="#00f0ff"/>
+</svg>
+<span>NovaCore</span>
+</div>
+</header>
+
+<section class="hero">
+<h1>Web’in Çekirdeğini İnşa Ediyoruz</h1>
+<p>Güvenli • Hızlı • Modern web çözümleri</p>
+</section>
+
+<section class="services">
+
+<div class="card">
+<div class="icon">🚀</div>
+<h3>Yeni Site Oluşturma</h3>
+<button class="open-btn" onclick="toggleForm('newSite')">Talep Oluştur</button>
+<div class="form-box" id="newSite">
+<label>Cihaz</label>
+<select name="device">
+<option>PC</option><option>Mobil</option><option>PC + Mobil</option>
+</select>
+<label>Site Amacı</label>
+<select name="purpose">
+<option>Kişisel</option><option>Oyun & Topluluk</option><option>E-Ticaret</option>
+</select>
+<label>E-posta</label><input type="email" name="email">
+<label>Telefon</label><input type="tel" name="phone">
+<label>Detaylar</label><textarea rows="4" name="details"></textarea>
+<button class="submit-btn" onclick="sendToFormspree('newSite')">Gönder</button>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">🛠️</div>
+<h3>Site Güncelleme</h3>
+<button class="open-btn" onclick="toggleForm('updateSite')">Talep Oluştur</button>
+<div class="form-box" id="updateSite">
+<label>E-posta</label><input type="email" name="email">
+<label>Telefon</label><input type="tel" name="phone">
+<label>Site Linki</label><input type="url" name="site_link">
+<label>İstenenler</label><textarea rows="4" name="details"></textarea>
+<button class="submit-btn" onclick="sendToFormspree('updateSite')">Gönder</button>
+</div>
+</div>
+
+<div class="card">
+<div class="icon">🔐</div>
+<h3>Güvenlik</h3>
+<button class="open-btn" onclick="toggleForm('security')">Talep Oluştur</button>
+<div class="form-box" id="security">
+<label>E-posta</label><input type="email" name="email">
+<label>Telefon</label><input type="tel" name="phone">
+<label>Site Linki</label><input type="url" name="site_link">
+<label>Güvenlik Türü</label>
+<select name="security_type">
+<option>SSL / HTTPS</option>
+<option>Firewall</option>
+<option>Açık Taraması</option>
+<option>Güncelleme</option>
+</select>
+<textarea rows="4" name="details"></textarea>
+<button class="submit-btn" onclick="sendToFormspree('security')">Gönder</button>
+</div>
+</div>
+
+</section>
+
+<section class="why">
+<h2>Neden NovaCore?</h2>
+<div class="why-grid">
+<div class="why-box">⚡ Hız & Performans</div>
+<div class="why-box">🔒 Güvenlik Odaklı</div>
+<div class="why-box">🎯 İhtiyaca Özel</div>
+<div class="why-box">🤝 Sürekli Destek</div>
+</div>
+</section>
+
+<footer>
+📞 +90 551 009 55 56 • ✉️ saidekva2013@gmail.com<br>
+© 2025 NovaCore
+</footer>
+
+<script>
+function toggleForm(id){
+document.querySelectorAll('.form-box').forEach(f=>{
+if(f.id!==id) f.style.display='none';
+});
+const f=document.getElementById(id);
+f.style.display=f.style.display==='block'?'none':'block';
+}
+
+function sendToFormspree(id){
+const form=document.getElementById(id);
+const data=new FormData();
+form.querySelectorAll("input,select,textarea").forEach(e=>{
+if(e.name) data.append(e.name,e.value);
+});
+fetch("https://formspree.io/f/mqezajvr",{
+method:"POST",
+body:data,
+headers:{Accept:"application/json"}
+}).then(r=>{
+if(r.ok){
+alert("İsteğiniz gönderildi ✅");
+form.reset();
+form.style.display="none";
+}else{
+alert("Gönderilemedi ❌");
+}
+});
+}
+</script>
+
+</body>
+</html>
